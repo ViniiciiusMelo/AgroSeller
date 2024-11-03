@@ -1,15 +1,14 @@
-﻿using Application.DTOs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Interfaces
+namespace Domain.RepositoryInterfaces
 {
-    public interface IProductsAppService
+    public interface IBaseRepository<T>
     {
-        Task<string> Create(ProductDTO product);
+        Task<string> Create(T entity);
 
         Task<string> Update();
 

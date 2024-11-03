@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,38 +17,40 @@ namespace AgroSeller.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> Create([FromBody] ProductDTO product)
         {
-            var result = await _productsAppService.Create();
-            return Ok();
+            var result = await _productsAppService.Create(product);
+
+            return Ok(result);
         }
 
         [HttpPut]
         public async Task<IActionResult> Update()
         {
             var result = await _productsAppService.Update();
-            return Ok();
+            return Ok(result);
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             var result = await _productsAppService.Get();
-            return Ok();
+            return Ok(result);
         }
 
+        [Route("GetList")]
         [HttpGet]
         public async Task<IActionResult> GetList()
         {
             var result = await _productsAppService.GetList();
-            return Ok();
+            return Ok(result);
         }
 
         [HttpDelete]
         public async Task<IActionResult> Delete()
         {
             var result = await _productsAppService.Delete();
-            return Ok();
+            return Ok(result);
         }
     }
 }
